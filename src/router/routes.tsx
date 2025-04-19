@@ -1,3 +1,4 @@
+import Clients from '@/pages/Clients';
 import MainTable from '@/pages/table/MainTable';
 import { lazy } from 'react';
 const Index = lazy(() => import('../pages/Index'));
@@ -10,8 +11,8 @@ const routes = [
         layout: 'default',
     },
     {
-        path: '/main',
-        element: <MainTable />,
+        path: '/clients',
+        element: <Clients />,
         layout: 'default',
     },
 

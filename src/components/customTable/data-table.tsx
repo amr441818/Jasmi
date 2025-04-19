@@ -30,6 +30,8 @@ import {
 import { Button } from "../ui/button"
 import { Input } from "@/components/ui/input"
 import { useState } from "react"
+import { DataTablePagination } from "./Pagination"
+import { DataTableViewOptions } from "./ViewOptions"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -72,7 +74,7 @@ const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
 
   return (
     <div>
-          <div className="flex items-center py-4">
+          <div className="flex items-center !justify-between w-full py-4 ">
         <Input
           placeholder="Filter emails..."
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
@@ -81,39 +83,12 @@ const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
           }
           className="max-w-sm"
         />
-         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              Columns
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="bg-white" align="end">
-            {table
-              .getAllColumns()
-              .filter(
-                (column) => column.getCanHide()
-              )
-              .map((column) => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
-                      column.toggleVisibility(!!value)
-                    }
-                  >
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                )
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <DataTableViewOptions table={table} />
       </div>
       <div className="rounded-md border">
 
-<Table className="!rounded-[12px]">
-  <TableHeader className="bg-[#ececf0] opacity-100 !rounded-[12px]">
+<Table className="!rounded-[12px]" >
+  <TableHeader  className="bg-[#ececf0]  opacity-100 !rounded-[12px]">
     {table.getHeaderGroups().map((headerGroup) => (
       <TableRow key={headerGroup.id}>
         {headerGroup.headers.map((header) => {
@@ -160,14 +135,15 @@ const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
 
 
 </Table>
+<DataTablePagination table={table}  />
 <div className="flex justify-between items-center px-2 w-full">
-<div className="flex-1 text-sm text-muted-foreground">
+{/* <div className="flex-1 text-sm text-muted-foreground">
   {table.getFilteredSelectedRowModel().rows.length} of{" "}
   {table.getFilteredRowModel().rows.length} row(s) selected.
-</div>
- <div className="flex items-center justify-end space-x-2 py-4">
+</div> */}
+ {/* <div className="flex items-center justify-end space-x-2 py-4"> */}
 
-  <Button
+  {/* <Button
     variant="outline"
     size="sm"
     onClick={() => table.previousPage()}
@@ -182,8 +158,9 @@ const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
     disabled={!table.getCanNextPage()}
   >
     Next
-  </Button>
-</div>
+  </Button> */}
+
+{/* </div> */}
 </div>
 </div>
 

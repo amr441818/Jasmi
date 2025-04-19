@@ -1,5 +1,5 @@
 {
-    "dashboard": "لوحة القيادة",
+    "dashboard": "لوحة التحكم",
     "sales": "مبيعات",
     "analytics": "تحليلات",
     "apps": "تطبيقات",
@@ -124,5 +124,15 @@
     "coming_soon_boxed": "قريبا محاصر",
     "coming_soon_cover": "قريبا تغطية",
     "contact_us_boxed": "اتصل بنا محاصر",
-    "contact_us_cover": "اتصل بنا الغلاف"
+    "contact_us_cover": "اتصل بنا الغلاف",
+    "table": {
+        "of": "من",
+        "rowsSelected": "صف(وف) محددة.",
+        "rowsPerPage": "عدد الصفوف",
+        "page": "الصفحة",
+        "goFirst": "الذهاب إلى الصفحة الأولى",
+        "goPrevious": "الذهاب إلى الصفحة السابقة",
+        "goNext": "الذهاب إلى الصفحة التالية",
+        "goLast": "الذهاب إلى الصفحة الأخيرة"
+      }
 }

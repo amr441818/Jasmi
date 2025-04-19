@@ -124,5 +124,15 @@
     "coming_soon_boxed": "Coming Soon Boxed",
     "coming_soon_cover": "Coming Soon Cover",
     "contact_us_boxed": "Contact Us Boxed",
-    "contact_us_cover": "Contact Us Cover"
+    "contact_us_cover": "Contact Us Cover",
+    "table": {
+        "of": "of",
+        "rowsSelected": "row(s) selected.",
+        "rowsPerPage": "Rows per page",
+        "page": "Page",
+        "goFirst": "Go to first page",
+        "goPrevious": "Go to previous page",
+        "goNext": "Go to next page",
+        "goLast": "Go to last page"
+      }
 }
