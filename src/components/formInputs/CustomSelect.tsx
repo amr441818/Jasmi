@@ -26,7 +26,7 @@ export default  function CustomSelect({control,placeholder, name, label, options
     <Controller  name={name} control={control}  render={({ field }) => (
     <Select  onValueChange={field.onChange} value={field.value}>
        {label&& <label className="flex mb-2">{label}</label>}
-      <SelectTrigger className="w-full  py-[26px]">
+      <SelectTrigger className="w-full  !bg-white py-[26px]">
         <SelectValue placeholder={placeholder? placeholder: "select.."}/>
       </SelectTrigger>
       <SelectContent>

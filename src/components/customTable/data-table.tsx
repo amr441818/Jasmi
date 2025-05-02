@@ -32,15 +32,22 @@ import { Input } from "@/components/ui/input"
 import { useState } from "react"
 import { DataTablePagination } from "./Pagination"
 import { DataTableViewOptions } from "./ViewOptions"
+import { Link } from "react-router-dom"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
-  data: TData[]
+  data: TData[],
+  addButton?:boolean,
+  buttonText?:string
+  linkUrl?:string
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  buttonText,
+  addButton,
+  linkUrl
 }: DataTableProps<TData, TValue>) {
 const [sorting, setSorting] = useState<SortingState>([])
 const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
@@ -74,7 +81,8 @@ const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
 
   return (
     <div>
-          <div className="flex items-center !justify-between w-full py-4 ">
+
+     <div className="flex items-center !justify-between w-full py-4 ">
         <Input
           placeholder="Filter emails..."
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
@@ -83,9 +91,13 @@ const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
           }
           className="max-w-sm"
         />
-        <DataTableViewOptions table={table} />
+       <div className="flex gap-2"> {addButton && <button className="px-4  bg-[#0B1242] text-white rounded-[4px]">
+        <Link to={linkUrl}>{buttonText}</Link>
+       </button>}
+       <DataTableViewOptions table={table} /></div>
       </div>
-      <div className="rounded-md border">
+
+     <div className="rounded-md border">
 
 <Table className="!rounded-[12px]" >
   <TableHeader  className="bg-[#ececf0]  opacity-100 !rounded-[12px]">

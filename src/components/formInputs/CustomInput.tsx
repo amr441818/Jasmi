@@ -12,7 +12,8 @@ export type customInputProps = {
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
     className?: string
     required?: boolean
-    disabled?: boolean
+    disabled?: boolean,
+    validation?:{}
 }
 
 import { Eye, EyeOff } from "lucide-react";
@@ -57,10 +58,10 @@ const InputComponent = (props: customInputProps) => {
           placeholder={props.placeholder}
           value={props.value}
           name={props.name}
-          {...props.register(props.name)}
+          {...props.register(props.name, props.validation&& props.validation)}
           required={props.required ? props.required : false}
           disabled={props.disabled ? props.disabled : false}
-          className="bg-white p-4 outline-none border md:ps-[25px] border-[#3C435C]/[0.14] text-gray-900 text-sm rounded-[14px] focus:ring-primary-600 focus:border-primary-600 block w-full dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+          className="bg-white p-4 outline-none border md:ps-[25px] border-[#3C435C]/[0.14] text-gray-900 text-sm rounded-[6px] focus:ring-primary-600 focus:border-primary-600 block w-full dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
         />
 
         {props?.isPassword && (

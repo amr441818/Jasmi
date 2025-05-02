@@ -1,4 +1,108 @@
 {
+
+
+        "name": {
+          "label": "Name",
+          "placeholder": "Enter name"
+        },
+        "contactEmail": {
+          "label": "Email",
+          "placeholder": "Enter email"
+        },
+        "phone": {
+          "label": "Phone",
+          "placeholder": "Enter phone number"
+        },
+        "internationalPhoneNumber": {
+          "label": "International Phone",
+          "placeholder": "Enter international phone number"
+        },
+        "address": {
+          "label": "Address",
+          "placeholder": "Enter address"
+        },
+        "gender": {
+          "label": "Gender",
+          "placeholder": "Select gender"
+        },
+        "type": {
+          "label": "Type",
+          "placeholder": "Select type"
+        },
+        "role": {
+          "label": "Role",
+          "placeholder": "Select role"
+        },
+        "birthDate": {
+          "label": "Birth Date",
+          "placeholder": "Enter birth date"
+        },
+        "nationalId": {
+          "label": "National ID",
+          "placeholder": "Enter national ID"
+        },
+        "passportId": {
+          "label": "Passport ID",
+          "placeholder": "Enter passport ID"
+        },
+        "nationalityId": {
+          "label": "Nationality ID",
+          "placeholder": "Enter nationality ID"
+        },
+        "cityId": {
+          "label": "City ID",
+          "placeholder": "Enter city ID"
+        },
+        "bank": {
+          "label": "Bank",
+          "placeholder": "Enter bank name"
+        },
+        "bankAccount": {
+          "label": "Bank Account",
+          "placeholder": "Enter bank account number"
+        },
+        "waterAccount": {
+          "label": "Water Account",
+          "placeholder": "Enter water account number"
+        },
+        "waterAccountPassword": {
+          "label": "Water Account Password",
+          "placeholder": "Enter water account password"
+        },
+        "electricityAccount": {
+          "label": "Electricity Account",
+          "placeholder": "Enter electricity account number"
+        },
+        "electricityAccountPassword": {
+          "label": "Electricity Account Password",
+          "placeholder": "Enter electricity account password"
+        },
+        "taxRegistrationNumber": {
+          "label": "Tax Registration Number",
+          "placeholder": "Enter tax registration number"
+        },
+        "postalBoxNumber": {
+          "label": "P.O. Box",
+          "placeholder": "Enter postal box number"
+        },
+        "tradeLicenseNumber": {
+          "label": "Trade License Number",
+          "placeholder": "Enter trade license number"
+        },
+        "companyName": {
+          "label": "Company Name",
+          "placeholder": "Enter company name"
+        },
+        "companyDescription": {
+          "label": "Company Description",
+          "placeholder": "Enter company description"
+        },
+        "jobTitle": {
+          "label": "Job Title",
+          "placeholder": "Enter job title"
+        },
+
+
     "dashboard": "Dashboard",
     "sales": "Sales",
     "analytics": "Analytics",
@@ -22,7 +126,7 @@
     "more": "More",
     "finance": "Finance",
     "crypto": "Crypto",
-    "chat": "Chat",
+    "clients": "Clients",
     "mailbox": "Mailbox",
     "todo_list": "Todo List",
     "notes": "Notes",

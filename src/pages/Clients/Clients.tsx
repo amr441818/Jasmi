@@ -17,7 +17,7 @@ const Clients = () => {
 
   return (
     <div className=" mx-auto py-10">
-      <DataTable columns={columns} data={payments} />
+      <DataTable addButton buttonText='Add Client' linkUrl="/clients/add" columns={columns} data={payments} />
     </div>
   )
 }

@@ -1,4 +1,110 @@
 {
+
+
+        "name": {
+          "label": "الاسم",
+          "placeholder": "ادخل الاسم"
+        },
+        "contactEmail": {
+          "label": "البريد الإلكتروني",
+          "placeholder": "ادخل البريد الإلكتروني"
+        },
+        "phone": {
+          "label": "رقم الهاتف",
+          "placeholder": "ادخل رقم الهاتف"
+        },
+        "internationalPhoneNumber": {
+          "label": "رقم الهاتف الدولي",
+          "placeholder": "ادخل رقم الهاتف الدولي"
+        },
+        "address": {
+          "label": "العنوان",
+          "placeholder": "ادخل العنوان"
+        },
+        "gender": {
+          "label": "الجنس",
+          "placeholder": "اختر الجنس"
+        },
+        "type": {
+          "label": "نوع العميل",
+          "placeholder": "اختر نوع العميل"
+        },
+        "role": {
+          "label": "الدور",
+          "placeholder": "اختر الدور"
+        },
+        "birthDate": {
+          "label": "تاريخ الميلاد",
+          "placeholder": "ادخل تاريخ الميلاد"
+        },
+        "nationalId": {
+          "label": "الرقم الوطني",
+          "placeholder": "ادخل الرقم الوطني"
+        },
+        "passportId": {
+          "label": "رقم الجواز",
+          "placeholder": "ادخل رقم الجواز"
+        },
+        "nationalityId": {
+          "label": "رقم الجنسية",
+          "placeholder": "ادخل رقم الجنسية"
+        },
+        "cityId": {
+          "label": "رقم المدينة",
+          "placeholder": "ادخل رقم المدينة"
+        },
+        "bank": {
+          "label": "البنك",
+          "placeholder": "ادخل اسم البنك"
+        },
+        "bankAccount": {
+          "label": "حساب البنك",
+          "placeholder": "ادخل رقم حساب البنك"
+        },
+        "waterAccount": {
+          "label": "حساب المياه",
+          "placeholder": "ادخل رقم حساب المياه"
+        },
+        "waterAccountPassword": {
+          "label": "كلمة مرور حساب المياه",
+          "placeholder": "ادخل كلمة مرور حساب المياه"
+        },
+        "electricityAccount": {
+          "label": "حساب الكهرباء",
+          "placeholder": "ادخل رقم حساب الكهرباء"
+        },
+        "electricityAccountPassword": {
+          "label": "كلمة مرور حساب الكهرباء",
+          "placeholder": "ادخل كلمة مرور حساب الكهرباء"
+        },
+        "taxRegistrationNumber": {
+          "label": "رقم التسجيل الضريبي",
+          "placeholder": "ادخل رقم التسجيل الضريبي"
+        },
+        "postalBoxNumber": {
+          "label": "رقم صندوق البريد",
+          "placeholder": "ادخل رقم صندوق البريد"
+        },
+        "tradeLicenseNumber": {
+          "label": "رقم السجل التجاري",
+          "placeholder": "ادخل رقم السجل التجاري"
+        },
+        "companyName": {
+          "label": "اسم الشركة",
+          "placeholder": "ادخل اسم الشركة"
+        },
+        "companyDescription": {
+          "label": "وصف الشركة",
+          "placeholder": "ادخل وصف الشركة"
+        },
+        "jobTitle": {
+          "label": "المسمى الوظيفي",
+          "placeholder": "ادخل المسمى الوظيفي"
+        }
+      ,
+
+
+
     "dashboard": "لوحة التحكم",
     "sales": "مبيعات",
     "analytics": "تحليلات",
@@ -22,7 +128,7 @@
     "more": "أكثر",
     "finance": "تمويل",
     "crypto": "تشفير",
-    "chat": "محادثة",
+    "clients": "العملاء",
     "mailbox": "صندوق بريد",
     "todo_list": "عمل قائمة",
     "notes": "ملحوظات",
