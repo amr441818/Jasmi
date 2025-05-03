@@ -2,14 +2,34 @@ import InputComponent from '@/components/formInputs/CustomInput'
 import CustomSelect from '@/components/formInputs/CustomSelect'
 import Upload from '@/components/formInputs/Upload'
 import UploadPdf from '@/components/formInputs/UploadPdf'
-import { useState } from 'react'
+import apiServiceCall from '@/lib/apiServiceCall'
+import { useMutation, useQuery } from '@tanstack/react-query'
+import { useEffect, useState } from 'react'
 
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify'
 
 const ClientsForm = () => {
     const {register, control, handleSubmit, formState:{errors}} = useForm()
     const {t} = useTranslation()
+    const [citiesOpions, setCitiesOptions] = useState([])
+    const {data, isSuccess} = useQuery({
+        queryKey:['cites'],
+        queryFn:()=> apiServiceCall({url:'system-settings/cities', headers:{
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkMzkyMjhjYS04YWMxLTQ5OTMtYmY4Ni1kMDFhYWU5NWFmYmYiLCJlbWFpbCI6ImFkbWluQGFsamFzbWkuY29tIiwiaWF0IjoxNzQ2MTIwODE3LCJleHAiOjE3NDg3MTI4MTd9.-kstHER7OI-_SHhMcmv2Ph0hlcCbgweYhEneHkdng6w`
+        }}),
+
+    })
+ useEffect(()=>{
+       if(isSuccess){
+        const cityOptions = data?.data?.map((city:any)=> {
+            return {value:city.id, label:city.name}
+        })
+        console.log(data)
+        setCitiesOptions(cityOptions)
+       }
+ },[isSuccess])
     // const clientsOpions = [{
     //     value: '1', label: 'Client A'
     // }]
@@ -39,7 +59,7 @@ const ClientsForm = () => {
         { name: "nationalId", placeholder: t("nationalId.placeholder"), type: "text", fieldType: "input", label: t("nationalId.label") },
         { name: "passportId", placeholder: t("passportId.placeholder"), type: "text", fieldType: "input", label: t("passportId.label") },
         { name: "nationalityId", placeholder: t("nationalityId.placeholder"), type: "text", fieldType: "input", label: t("nationalityId.label") },
-        { name: "cityId", placeholder: t("cityId.placeholder"), type: "text", fieldType: "input", label: t("cityId.label") },
+        { name: "cityId", placeholder: t("cityId.placeholder"), type: "text", fieldType: "select", options:citiesOpions, label: t("cityId.label") },
         { name: "bank", placeholder: t("bank.placeholder"), type: "text", fieldType: "input", label: t("bank.label") },
         { name: "bankAccount", placeholder: t("bankAccount.placeholder"), type: "text", fieldType: "input", label: t("bankAccount.label") },
         { name: "waterAccount", placeholder: t("waterAccount.placeholder"), type: "text", fieldType: "input", label: t("waterAccount.label") },
@@ -54,12 +74,76 @@ const ClientsForm = () => {
         { name: "jobTitle", placeholder: t("jobTitle.placeholder"), type: "text", fieldType: "input", label: t("jobTitle.label") }
     ];
 
+    // const {mutate:getImageUrl} = useMutation({
+    //     mutationKey:["images"],
 
+    //     mutationFn: (data)=>apiServiceCall({url:"upload", method:"POST", body:data ,headers:{
+    //         'Content-Type':"multipart/form-data",
+    //          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkMzkyMjhjYS04YWMxLTQ5OTMtYmY4Ni1kMDFhYWU5NWFmYmYiLCJlbWFpbCI6ImFkbWluQGFsamFzbWkuY29tIiwiaWF0IjoxNzQ2MTIwODE3LCJleHAiOjE3NDg3MTI4MTd9.-kstHER7OI-_SHhMcmv2Ph0hlcCbgweYhEneHkdng6w`
+    //     }}),
+    //     onError(error){
+    //         toast.error(error?.message)
+    //     },
+    //     onSuccess(data){
+    //         console.log(data)
+    //         identityPictureUrl = data[0].relativePath
+    //         toast.success(data?.data?.message)
+    //     }
+    // })
 
-const onSubmit = (data)=>{
-    console.log(data)
-    console.log(file)
-}
+const {mutate, isPending} = useMutation({
+    mutationKey:["customars"],
+    mutationFn: (data)=>apiServiceCall({url:"customers", method:"POST", body:data, headers:{
+         Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkMzkyMjhjYS04YWMxLTQ5OTMtYmY4Ni1kMDFhYWU5NWFmYmYiLCJlbWFpbCI6ImFkbWluQGFsamFzbWkuY29tIiwiaWF0IjoxNzQ2MTIwODE3LCJleHAiOjE3NDg3MTI4MTd9.-kstHER7OI-_SHhMcmv2Ph0hlcCbgweYhEneHkdng6w`
+    }}),
+    onError(error){
+        toast.error(error?.message)
+    },
+    onSuccess(data){
+        toast.success(data?.data?.message)
+    }
+})
+const onSubmit = async (formData) => {
+    try {
+ let identityPictureUrl = null;
+
+      if (file) {
+        const uploadForm = new FormData();
+        uploadForm.append('identityPicture', file); // Rename if backend expects `identityPicture`
+
+        const uploadResponse = await apiServiceCall({
+          url: 'upload',
+          method: 'POST',
+          body: uploadForm,
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkMzkyMjhjYS04YWMxLTQ5OTMtYmY4Ni1kMDFhYWU5NWFmYmYiLCJlbWFpbCI6ImFkbWluQGFsamFzbWkuY29tIiwiaWF0IjoxNzQ2MTIwODE3LCJleHAiOjE3NDg3MTI4MTd9.-kstHER7OI-_SHhMcmv2Ph0hlcCbgweYhEneHkdng6w`          }
+        });
+console.log(uploadResponse)
+        identityPictureUrl = [uploadResponse[0].relativePath]  || null;
+        const customerPayload = {
+            ...formData,
+            birthDate: new Date(formData.birthDate).toISOString(), // Ensure ISO string
+            identityPicture: identityPictureUrl, // append uploaded image URL or ID
+          };
+
+          mutate(customerPayload); // Call customers API
+      }
+
+      // Build the full request body
+
+    } catch (err) {
+      toast.error("Something went wrong");
+    }
+  };
+
+// const onSubmit = (data)=>{
+//     console.log(data)
+//     const form  = new FormData()
+//     form.append('identityPicture', file)
+//     getImageUrl(form)
+//     console.log(file)
+// }
   return (
 
 <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 lg:grid-cols-12 gap-6">
