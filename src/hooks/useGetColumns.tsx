@@ -13,16 +13,18 @@ type UseGetColumnsProps<T> = {
 function useGetColumns<T extends { id: string }>({ record, sortableColumns = [] }: UseGetColumnsProps<T>): ColumnDef<T>[] {
     const entries = Object.keys(record) as (keyof T)[];
     const cols: ColumnDef<T>[] = entries.map((entry) => {
+       if(entry!==null){
         return {
             id: entry as string,
-            accessorKey: entry,
+            accessorKey: entry!==null? entry: "",
             header: ({ column }) =>
-                sortableColumns.includes(entry) ? (
-                    <DataTableColumnHeader column={column} title={String(entry).charAt(0).toUpperCase() + String(entry).slice(1)} />
+                sortableColumns?.includes(entry) ? (
+                    <DataTableColumnHeader column={column} title={String(entry)?.charAt(0)?.toUpperCase() + String(entry)?.slice(1)} />
                 ) : (
-                    <div>{String(entry).charAt(0).toUpperCase() + String(entry).slice(1)}</div>
+                    <div>{String(entry)?.charAt(0)?.toUpperCase() + String(entry)?.slice(1)}</div>
                 ),
         };
+       }
     });
 
     const actionColumn: ColumnDef<T> = {

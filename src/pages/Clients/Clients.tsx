@@ -22,7 +22,7 @@ const Clients = () => {
 
 
   const columns = useGetColumns<Payment>({
-    record: data?.data?.items[0],
+    record: data?.data?.items[0] ,
     sortableColumns: ["email"],
   })
 
@@ -30,7 +30,7 @@ const Clients = () => {
   console.log(data?.data?.items)
   return (
     <div className=" mx-auto py-10">
-      <DataTable addButton buttonText='Add Client' linkUrl="/clients/add" columns={columns} data={data?.data?.items} />
+      {/* <DataTable addButton buttonText='Add Client' linkUrl="/clients/add" columns={columns} data={data?.data?.items} /> */}
     </div>
   )
 }
