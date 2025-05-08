@@ -11,8 +11,13 @@ type UseGetColumnsProps<T> = {
 };
 
 function useGetColumns<T extends { id: string }>({ record, sortableColumns = [] }: UseGetColumnsProps<T>): ColumnDef<T>[] {
+
+    if (!record) return [];
     const entries = Object.keys(record) as (keyof T)[];
+
+
     const cols: ColumnDef<T>[] = entries.map((entry) => {
+
        if(entry!==null){
         return {
             id: entry as string,

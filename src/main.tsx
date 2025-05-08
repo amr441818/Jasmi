@@ -21,13 +21,15 @@ import store from './store/index';
 import {
     QueryClient,
     QueryClientProvider,
-   
+
   } from '@tanstack/react-query'
+import { ToastContainer } from 'react-toastify';
 
   const queryClient = new QueryClient()
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
         <Suspense>
+            <ToastContainer position='bottom-left'/>
         <QueryClientProvider client={queryClient}>
             <Provider store={store}>
                 <RouterProvider router={router} />
