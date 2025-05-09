@@ -1,7 +1,15 @@
 {
 
-
-        "name": {
+"login": {
+    "title": "Login",
+    "placeholder": "Enter Your Email ",
+    "passPlaceholder": "Enter Your pawword ",
+    "button": "Login",
+    "no_account": "Don't have an account?",
+    "create_account": "Create a new account"
+  },
+  "customers":{
+    "name": {
           "label": "Name",
           "placeholder": "Enter name"
         },
@@ -9,6 +17,7 @@
           "label": "Email",
           "placeholder": "Enter email"
         },
+
         "phone": {
           "label": "Phone",
           "placeholder": "Enter phone number"
@@ -100,7 +109,9 @@
         "jobTitle": {
           "label": "Job Title",
           "placeholder": "Enter job title"
-        },
+        }
+  }
+        ,
 
 
     "dashboard": "Dashboard",
@@ -209,7 +220,7 @@
     "unlock_cover": "Unlock Cover",
     "recover_id_cover": "Recover Id Cover",
     "supports": "Supports",
-    "login": "Login",
+
     "lockscreen": "Lockscreen",
     "password_recovery": "Password Recovery",
     "register": "Register",

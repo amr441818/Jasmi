@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { DataTableColumnHeader } from '../components/customTable/SoartableColumn';
+import { useNavigate } from 'react-router-dom';
 
 type UseGetColumnsProps<T> = {
     record: T;
@@ -11,7 +12,7 @@ type UseGetColumnsProps<T> = {
 };
 
 function useGetColumns<T extends { id: string }>({ record, sortableColumns = [] }: UseGetColumnsProps<T>): ColumnDef<T>[] {
-
+const navigate = useNavigate()
     if (!record) return [];
     const entries = Object.keys(record) as (keyof T)[];
 
@@ -49,8 +50,8 @@ function useGetColumns<T extends { id: string }>({ record, sortableColumns = [] 
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
                         <DropdownMenuItem onClick={() => navigator.clipboard.writeText(item.id)}>Copy ID</DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>View customer</DropdownMenuItem>
-                        <DropdownMenuItem>View details</DropdownMenuItem>
+                        <DropdownMenuItem onClick={()=>navigate(`/clients/${item.id}`)}>Edit Item</DropdownMenuItem>
+                        <DropdownMenuItem>Delete Item</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             );

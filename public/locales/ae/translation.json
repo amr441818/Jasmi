@@ -1,7 +1,16 @@
 {
 
+  "login": {
+    "title": "تسجيل الدخول",
 
-        "name": {
+    "placeholder": "ادخل البريد الالكتروني ",
+    "passPlaceholder": "ادخل  كلمه المرور ",
+    "button": "الدخول",
+    "no_account": "ليس لديك حساب",
+    "create_account": "إنشاء حساب جديد"
+  },
+      "customeres":{
+          "name": {
           "label": "الاسم",
           "placeholder": "ادخل الاسم"
         },
@@ -101,6 +110,7 @@
           "label": "المسمى الوظيفي",
           "placeholder": "ادخل المسمى الوظيفي"
         }
+      }
       ,
 
 
@@ -211,7 +221,7 @@
     "unlock_cover": "فتح الغطاء",
     "recover_id_cover": "استعادة غطاء الهوية",
     "supports": "يدعم",
-    "login": "تسجيل الدخول",
+
     "lockscreen": "اقفل الشاشة",
     "password_recovery": "استعادة كلمة السر",
     "register": "يسجل",

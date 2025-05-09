@@ -55,13 +55,13 @@ const Upload = (props: UploadImageProps) => {
             />
             <div
                 onClick={handleButtonClick}
-                className="flex cursor-pointer w-[220px] h-[80px] rounded-[12px] border-[2px] border-[#0B1242] border-solid justify-center items-center overflow-hidden text-center px-2"
+                className="flex cursor-pointer w-[220px] h-[80px] rounded-[12px] border-[2px] border-[#0B1242] border-solid justify-center items-center overflow-hidden text-center "
             >
                 {fileType?.startsWith('image/') && imageSrc ? (
                     <img
                         src={imageSrc}
                         alt="Uploaded"
-                        className="w-full h-full rounded-full object-cover"
+                        className="w-full h-full rounded-[12px] object-cover"
                     />
                 ) : fileType === 'application/pdf' && fileName ? (
                     <span className="text-sm text-[#0B1242] truncate">{fileName}</span>

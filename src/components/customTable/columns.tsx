@@ -61,7 +61,7 @@ export const columns: ColumnDef<any>[] = [
         id: 'actions',
         header: () => <div className="">action</div>,
         cell: ({ row }) => {
-            const payment = row.original;
+            const item = row.original;
 
             return (
                 <DropdownMenu>
@@ -73,9 +73,9 @@ export const columns: ColumnDef<any>[] = [
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className=" bg-white !z-[999]" align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem onClick={() => navigator.clipboard.writeText(payment.id)}>Copy payment ID</DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => navigator.clipboard.writeText(item.id)}>Copy ID</DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>View customer</DropdownMenuItem>
+                        <DropdownMenuItem>Edit customer</DropdownMenuItem>
                         <DropdownMenuItem>View payment details</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>

@@ -1,5 +1,6 @@
 import InputComponent from '@/components/formInputs/CustomInput';
 import CustomSelect from '@/components/formInputs/CustomSelect';
+import { DatePicker } from '@/components/formInputs/DateInput';
 import Upload from '@/components/formInputs/Upload';
 import UploadPdf from '@/components/formInputs/UploadPdf';
 import apiServiceCall from '@/lib/apiServiceCall';
@@ -11,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const ClientsForm = () => {
+const PropertiesForm = () => {
     const navigate = useNavigate();
     const params = useParams()
     const paramId = params.id
@@ -124,60 +125,128 @@ const ClientsForm = () => {
     // }]
     const [file, setFile] = useState();
     const [isLoading, setIsLoading] = useState(false)
-    const customerFields = [
-        { name: 'name', placeholder: t('customers.name.placeholder'), type: 'text', fieldType: 'input', label: t('customers.name.label'), required: { required: 'filed req' } },
-        { name: 'contactEmail', placeholder: t('customers.contactEmail.placeholder'), type: 'email', fieldType: 'input', label: t('customers.contactEmail.label') },
-        { name: 'phone', placeholder: t('customers.phone.placeholder'), type: 'text', fieldType: 'input', label: t('customers.phone.label') },
-        { name: 'internationalPhoneNumber', placeholder: t('customers.internationalPhoneNumber.placeholder'), type: 'text', fieldType: 'input', label: t('customers.internationalPhoneNumber.label') },
-        { name: 'address', placeholder: t('customers.address.placeholder'), type: 'text', fieldType: 'input', label: t('customers.address.label') },
-        {
-            name: 'gender',
-            placeholder: t('customers.gender.placeholder'),
-            fieldType: 'select',
-            label: t('customers.gender.label'),
-            options: [
-                { value: 'MALE', label: t('customers.gender.male') },
-                { value: 'FEMALE', label: t('customers.gender.female') },
-            ],
-        },
-        {
-            name: 'type',
-            placeholder: t('customers.type.placeholder'),
-            fieldType: 'select',
-            label: t('customers.type.label'),
-            options: [
-                { value: 'COMPANY', label: t('customers.type.company') },
-                { value: 'INDIVIDUAL', label: t('customers.type.individual') },
-            ],
-        },
-        {
-            name: 'role',
-            placeholder: t('customers.role.placeholder'),
-            fieldType: 'select',
-            label: t('customers.role.label'),
-            options: [
-                { value: 'OWNER', label: t('customers.role.owner') },
-                { value: 'MANAGER', label: t('customers.role.manager') },
-            ],
-        },
-        { name: 'birthDate', placeholder: t('customers.birthDate.placeholder'), type: 'date', fieldType: 'input', label: t('customers.birthDate.label') },
-        { name: 'nationalId', placeholder: t('customers.nationalId.placeholder'), type: 'text', fieldType: 'input', label: t('customers.nationalId.label') },
-        { name: 'passportId', placeholder: t('customers.passportId.placeholder'), type: 'text', fieldType: 'input', label: t('customers.passportId.label') },
-        { name: 'nationalityId', placeholder: t('customers.nationalityId.placeholder'), type: 'text', fieldType: 'input', label: t('customers.nationalityId.label') },
-        { name: 'cityId', placeholder: t('customers.cityId.placeholder'), type: 'text', fieldType: 'select', options: citiesOpions, label: t('customers.cityId.label') },
-        { name: 'bank', placeholder: t('customers.bank.placeholder'), type: 'text', fieldType: 'input', label: t('customers.bank.label') },
-        { name: 'bankAccount', placeholder: t('customers.bankAccount.placeholder'), type: 'text', fieldType: 'input', label: t('customers.bankAccount.label') },
-        { name: 'waterAccount', placeholder: t('customers.waterAccount.placeholder'), type: 'text', fieldType: 'input', label: t('customers.waterAccount.label') },
-        { name: 'waterAccountPassword', placeholder: t('customers.waterAccountPassword.placeholder'), type: 'password', fieldType: 'input', label: t('customers.waterAccountPassword.label') },
-        { name: 'electricityAccount', placeholder: t('customers.electricityAccount.placeholder'), type: 'text', fieldType: 'input', label: t('customers.electricityAccount.label') },
-        { name: 'electricityAccountPassword', placeholder: t('customers.electricityAccountPassword.placeholder'), type: 'password', fieldType: 'input', label: t('customers.electricityAccountPassword.label') },
-        { name: 'taxRegistrationNumber', placeholder: t('customers.taxRegistrationNumber.placeholder'), type: 'text', fieldType: 'input', label: t('customers.taxRegistrationNumber.label') },
-        { name: 'postalBoxNumber', placeholder: t('customers.postalBoxNumber.placeholder'), type: 'text', fieldType: 'input', label: t('customers.postalBoxNumber.label') },
-        { name: 'tradeLicenseNumber', placeholder: t('customers.tradeLicenseNumber.placeholder'), type: 'text', fieldType: 'input', label: t('customers.tradeLicenseNumber.label') },
-        { name: 'companyName', placeholder: t('customers.companyName.placeholder'), type: 'text', fieldType: 'input', label: t('customers.companyName.label') },
-        { name: 'companyDescription', placeholder: t('customers.companyDescription.placeholder'), type: 'text', fieldType: 'input', label: t('customers.companyDescription.label') },
-        { name: 'jobTitle', placeholder: t('customers.jobTitle.placeholder'), type: 'text', fieldType: 'input', label: t('customers.jobTitle.label') },
-    ];
+const propertyFields = [
+  { name: "name", label: "Name", type: "text", placeholder: "Enter property name", fieldType: "input", required: true },
+  { name: "number", label: "Number", type: "text", placeholder: "Enter property number", fieldType: "input", required: true },
+  {
+    name: "type",
+    label: "Type",
+    fieldType: "select",
+    placeholder: "Select type",
+    options: [
+      { value: "VILLA", label: "Villa" },
+      { value: "APARTMENT", label: "Apartment" },
+      { value: "COMMERCIAL", label: "Commercial" }
+    ],
+    required: true
+  },
+  {
+    name: "status",
+    label: "Status",
+    fieldType: "select",
+    placeholder: "Select status",
+    options: [
+      { value: "NEW", label: "New" },
+      { value: "OLD", label: "Old" },
+      { value: "RENEWED", label: "Renewed" }
+    ],
+    required: true
+  },
+  {
+    name: "usageType",
+    label: "Usage Type",
+    fieldType: "select",
+    placeholder: "Select usage type",
+    options: [
+      { value: "RESIDENTIAL", label: "Residential" },
+      { value: "COMMERCIAL", label: "Commercial" },
+      { value: "MIXED", label: "Mixed" }
+    ],
+    required: true
+  },
+  { name: "area", label: "Area (sqm)", type: "number", placeholder: "Enter area in square meters", fieldType: "input", required: true },
+  { name: "street", label: "Street", type: "text", placeholder: "Enter street name", fieldType: "input", required: true },
+  { name: "district", label: "District", type: "text", placeholder: "Enter district", fieldType: "input", required: true },
+  { name: "nearestLandmark", label: "Nearest Landmark", type: "text", placeholder: "Enter nearest landmark", fieldType: "input", required: false },
+  { name: "areaCode", label: "Area Code", type: "text", placeholder: "Enter area code", fieldType: "input", required: false },
+  { name: "longitude", label: "Longitude", type: "number", placeholder: "Enter longitude", fieldType: "input", required: false },
+  { name: "latitude", label: "Latitude", type: "number", placeholder: "Enter latitude", fieldType: "input", required: false },
+  { name: "documentNumber", label: "Document Number", type: "text", placeholder: "Enter document number", fieldType: "input", required: true },
+  { name: "documentIssuer", label: "Document Issuer", type: "text", placeholder: "Enter issuer name", fieldType: "input", required: true },
+  { name: "taxRegestrationNumber", label: "Tax Registration Number", type: "text", placeholder: "Enter tax registration number", fieldType: "input", required: false },
+  { name: "landPartNumber", label: "Land Part Number", type: "text", placeholder: "Enter land part number", fieldType: "input", required: false },
+  { name: "spatialNumber", label: "Spatial Number", type: "text", placeholder: "Enter spatial number", fieldType: "input", required: false },
+  { name: "plotNumber", label: "Plot Number", type: "text", placeholder: "Enter plot number", fieldType: "input", required: false },
+  { name: "floorsCount", label: "Floors Count", type: "number", placeholder: "Enter number of floors", fieldType: "input", required: false },
+  { name: "unitsCount", label: "Units Count", type: "number", placeholder: "Enter number of units", fieldType: "input", required: false },
+  { name: "parkingCapacity", label: "Parking Capacity", type: "number", placeholder: "Enter parking capacity", fieldType: "input", required: false },
+  {
+    name: "elevator",
+    label: "Elevator",
+    fieldType: "select",
+    placeholder: "Select elevator availability",
+    options: [
+      { value: true, label: "Yes" },
+      { value: false, label: "No" }
+    ],
+    required: false
+  },
+  { name: "constructionCost", label: "Construction Cost", type: "number", placeholder: "Enter construction cost", fieldType: "input", required: false },
+  { name: "propertyValue", label: "Property Value", type: "number", placeholder: "Enter property value", fieldType: "input", required: false },
+  { name: "managementPercentageFee", label: "Management % Fee", type: "number", placeholder: "Enter management percentage", fieldType: "input", required: false },
+  { name: "bankName", label: "Bank Name", type: "text", placeholder: "Enter bank name", fieldType: "input", required: false },
+  { name: "bankAccountNumber", label: "Bank Account Number", type: "text", placeholder: "Enter bank account number", fieldType: "input", required: false },
+  {
+    name: "busyStatus",
+    label: "Busy Status",
+    fieldType: "select",
+    placeholder: "Select status",
+    options: [
+      { value: "BUSY", label: "Busy" },
+      { value: "EMPTY", label: "Empty" }
+    ],
+    required: false
+  },
+  {
+    name: "acType",
+    label: "AC Type",
+    fieldType: "select",
+    placeholder: "Select AC type",
+    options: [
+      { value: "CENTRAL", label: "Central" },
+      { value: "SPLIT", label: "Split" },
+      { value: "WINDOW", label: "Window" }
+    ],
+    required: false
+  },
+  {
+    name: "cityId",
+    label: "City",
+    fieldType: "select",
+    placeholder: "Select city",
+    options: [], // To be populated dynamically
+    required: true
+  },
+  { name: "lastMaintenanceDate", label: "Last Maintenance Date", type: "date", placeholder: "Pick last maintenance date", fieldType: "date", required: false },
+  { name: "managmentStartDate", label: "Management Start Date", type: "date", placeholder: "Pick start date", fieldType: "date", required: false },
+  { name: "bankAccountOpeningDate", label: "Bank Account Opening Date", type: "date", placeholder: "Pick account opening date", fieldType: "date", required: false },
+  { name: "constructionDate", label: "Construction Date", type: "date", placeholder: "Pick construction date", fieldType: "date", required: false },
+  { name: "documentDate", label: "Document Date", type: "date", placeholder: "Pick document date", fieldType: "date", required: false },
+  {
+    name: "customerIdsWithPercentage",
+    label: "Customer IDs with Percentage",
+    fieldType: "dynamic",
+    placeholder: "",
+    fields: [
+      { name: "customerId", label: "Customer ID", type: "text", placeholder: "Enter customer ID", required: true },
+      { name: "percentage", label: "Percentage", type: "number", placeholder: "Enter percentage", required: true }
+    ],
+    required: false
+  }
+];
+
+
+
 
     // const {mutate:getImageUrl} = useMutation({
     //     mutationKey:["images"],
@@ -217,8 +286,8 @@ const ClientsForm = () => {
             navigate('/client');
         },
     });
-//@ts-ignore
-    const onSubmit = async (formData) => {
+    //@ts-ignore
+    const onSubmit =  async (formData) => {
         try {
             let identityPictureUrl = null;
 
@@ -277,7 +346,7 @@ const ClientsForm = () => {
     // }
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            {customerFields.map((field) => (
+            {propertyFields.map((field) => (
                 <div key={field.name} className="col-span-12 md:col-span-6 lg:col-span-4">
                     {field.fieldType === 'input' ? (
                         <div className="flex flex-col gap-1">
@@ -292,8 +361,12 @@ const ClientsForm = () => {
                             <p>{errors[`${field.name}`]?.message}</p>
                         </div>
                     ) : field.fieldType === 'select' ? (
+                        //@ts-ignore
                         <CustomSelect label={field.label} control={control} options={field.options} name={field.name} placeholder={field.placeholder} />
-                    ) : null}
+                    ) : field.fieldType === 'date'? <div className="flex flex-col ">
+                        <label htmlFor="">{field.label}</label>
+                        <DatePicker control={control} name={field.name}/>
+                    </div> :null}
                 </div>
             ))}
             <div className=" flex col-span-12 gap-10 items-center ">
@@ -307,4 +380,4 @@ const ClientsForm = () => {
     );
 };
 
-export default ClientsForm;
+export default PropertiesForm;
