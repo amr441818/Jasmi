@@ -83,7 +83,7 @@ useEffect(()=>{
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center w-[90%] lg:w-[40%] items-center  ">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col w-full gap-4">
             <div className=" w-full lg:w-[452px] h-[54px]">
           <InputComponent
             type="email"
